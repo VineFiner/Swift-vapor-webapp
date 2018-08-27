@@ -13,6 +13,9 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     try routes(router)
     services.register(router, as: Router.self)
 
+    let myService = NIOServerConfig.default(port: 8012)
+    services.register(myService)
+    
     /// Use Leaf for rendering views
     config.prefer(LeafRenderer.self, for: ViewRenderer.self)
     
@@ -23,7 +26,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     services.register(middlewares)
 
     // Configure a SQLite database
-    let sqlite = try SQLiteDatabase(storage: .memory)
+    let sqlite = try SQLiteDatabase(storage: .file(path: "db.sqlite"))
 
     /// Register the configured SQLite database to the database config.
     var databases = DatabasesConfig()
