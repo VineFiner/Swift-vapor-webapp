@@ -17,11 +17,12 @@ public func routes(_ router: Router) throws {
     router.get { req in
         return try req.view().render("welcome")
     }
-    
     // Says hello
+    // 使用 String.parameter 指定第二个参数可以是任何String
     router.get("hello", String.parameter) { req -> Future<View> in
-        return try req.view().render("hello", [
-            "name": req.parameters.next(String.self)
-            ])
+        //  提取在 Request对象中传递的用户名
+        let name = try req.parameters.next(String.self)
+        // 返回问候语
+        return try req.view().render("hello", ["name": name])
     }
 }
