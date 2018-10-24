@@ -1,0 +1,29 @@
+#set("content") {
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <h1>#(category.name)</h1>
+
+      <div class="table-responsive">
+        #if(count(blogs) > 0) {
+          <table class="table table-bordered table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th>name</th>
+                  <th>summary</th>
+                </tr>
+              </thead>
+              <tbody>
+                #for(blog in blogs) {
+                  <tr>
+                    <td><a href="/blogs/#(blog.id)">#(blog.name)</a></td>
+                    <td>#(blog.summary)</td>
+                  </tr>
+                }
+              </tbody>
+          </table>
+        } else {
+          <h2>还没有博客!</h2>
+        }
+      </div>
+    </main>
+}
+#embed("manage/managebase")

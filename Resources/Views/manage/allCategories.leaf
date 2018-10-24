@@ -1,0 +1,26 @@
+#set("content") {
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <h1>All Categories</h1>
+      <div class="table-responsive">
+        #if(count(categories) > 0) {
+          <table class="table table-bordered table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th>name</th>
+                </tr>
+              </thead>
+              <tbody>
+                #for(category in categories) {
+                  <tr>
+                    <td><a href="/manage/categorys/#(category.id)">#(category.name)</a></td>
+                  </tr>
+                }
+              </tbody>
+          </table>
+        } else {
+          <h2>还没有任何类别呢!</h2>
+        }
+      </div>
+    </main>
+}
+#embed("manage/managebase")

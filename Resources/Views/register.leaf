@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Auth</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    </head>
+    <body class="container">
+        #if(message) {
+              <div class="alert alert-danger" role="alert">
+                请修复这个错误:<br />
+                #(message)
+              </div> 
+         }
+        <br />
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">注册</h3>
+                        <form action="/register" method="POST">
+                            <div class="form-group">
+                                <label for="username">昵称</label>
+                                <input type="text" name="nickName" class="form-control" id="nickName" />
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Email</label>
+                                <input type="text" name="email" class="form-control" id="username" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password">密码</label>
+                            <input type="password" name="password" class="form-control" id="password" />
+                            </div>
+                            <!-- 这里是确认密码 -->
+                            <div class="form-group">
+                                <label for="confirmPassword">确认密码</label>
+                                <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-block btn-primary" value="注册" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

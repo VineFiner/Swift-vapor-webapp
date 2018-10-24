@@ -1,0 +1,56 @@
+#set("title") { Home }
+
+#set("body") {
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8 blog-main">
+          #if(blogs) {
+          	#for(blog in blogs) {
+	          <div class="blog-post">
+	            <h2 class="blog-post-title">#(blog.blog.name)</h2>
+                <p class="blog-post-meta">#(blog.blog.createdAt) by <a href="/manage/users/#(blog.user.id)">#(blog.user.nickname)</a></p>
+	            <p>#(blog.blog.summary)</p>
+				<p>
+					<a href="/blogs/#(blog.id)">继续阅读 <i class="uk-icon-angle-double-right"></i>
+					</a>
+				</p>
+	          </div><!-- /.blog-post -->
+          	}
+          	<!-- 这里是底部分页 -->
+          	<nav class="blog-pagination">
+            	<a class="btn btn-outline-primary" href="#">Older</a>
+            	<a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+          	</nav>
+          } else {
+            <h3> 还没有任何内容呢~ </h3>
+          }
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+          <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic">关于</h4>
+            <p class="mb-0">Vine <em>blog</em> 这里使用的是blog模板</p>
+          </div>
+
+          <div class="p-3">
+            <h4 class="font-italic">Archives</h4>
+            <ol class="list-unstyled mb-0">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+            </ol>
+          </div>
+
+          <div class="p-3">
+            <h4 class="font-italic">Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+            </ol>
+          </div>
+        </aside><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </main><!-- /.container -->
+}
+
+#embed("base")

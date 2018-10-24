@@ -1,0 +1,24 @@
+#set("content") {
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    	<h1>#(blog.name)</h1>
+		<h2>#(blog.content)</h2>
+
+		<p>Created by <a href="/manage/users/#(user.id)/">#(user.nickname)</a></p>
+			#if(count(categories) > 0) {
+				<h3>Categories</h3>
+				<ul>
+  				#for(category in categories) {
+  					<li>
+    					<a href="/categories/#(category.id)">#(category.name)</a>
+  					</li>
+  				}
+				</ul>
+			}
+		<form method="post" action="/blogs/#(blog.id)/delete">
+		  <a class="btn btn-primary" href="/blogs/#(blog.id)/edit" role="button">Edit</a>&nbsp;
+		  <input class="btn btn-danger" type="submit" value="Delete" />
+		</form>
+    </main>
+}
+
+#embed("manage/managebase")
